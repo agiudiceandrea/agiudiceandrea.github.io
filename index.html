@@ -94,20 +94,26 @@ function CambiaLuogo (){
             // info.innerHTML = rolled;
         }
 
+	function aggiungieventoa (idelemento) {
+		if (idelemento.addEventListener) {    // all browsers except IE before version 9
+				// Internet Explorer, Opera, Google Chrome and Safari
+			idelemento.addEventListener ("mousewheel", MouseScroll, false);
+				// Firefox
+			idelemento.addEventListener ("DOMMouseScroll", MouseScroll, false);
+		}
+		else {
+			if (idelemento.attachEvent) { // IE before version 9
+				idelemento.attachEvent ("onmousewheel", MouseScroll);
+			}
+		}
+	}
+	
         function InitMouseWheel () {
                 // for mouse scrolling in Firefox
             var elem = document.getElementById ("MainImage");
-            if (elem.addEventListener) {    // all browsers except IE before version 9
-                    // Internet Explorer, Opera, Google Chrome and Safari
-                elem.addEventListener ("mousewheel", MouseScroll, false);
-                    // Firefox
-                elem.addEventListener ("DOMMouseScroll", MouseScroll, false);
-            }
-            else {
-                if (elem.attachEvent) { // IE before version 9
-                    elem.attachEvent ("onmousewheel", MouseScroll);
-                }
-            }
+            aggiungieventoa (elem);
+			var elem = document.getElementById ("OverlayCitiesPuglia");
+			aggiungieventoa (elem);
         }
 
 </script></head>
