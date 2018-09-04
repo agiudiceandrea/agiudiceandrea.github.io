@@ -1,0 +1,329 @@
+﻿<html><head>
+
+<title>Meteosat</title>
+
+<script language="javascript" src="gifshot (1).js"></script><script language="javascript">
+var numOfImages = 82; <!--var numOfImages = 95;-->
+var inizio = 0;
+var fine = numOfImages-1;
+
+<!--var infrared = false;-->
+var infrared = false;
+var overlaycities = false;
+
+var lat = 0;
+var lon = 0;
+
+var timeoutValue = 400;
+var animDelay = 1000;
+
+var imageIndex = numOfImages-1;
+var timeoutID = 0;
+var playMode = 0;
+
+
+function setImageVisible(id, visible) {
+    var img = document.getElementById(id);
+    img.style.visibility = (visible ? 'visible' : 'hidden');
+}
+
+function CaricaImmagini (){
+	/*CambiaLuogo();*/
+	document.MainImage.src = "http://www.sat24.com/zoomimage2.ashx?region=eu&index=" + (numOfImages-imageIndex) + "&ir=" + infrared + "&lat=" + lat.toLocaleString() + "&lon=" + lon.toLocaleString();
+	imgarray = new Array(numOfImages);
+<!--	for (var i = 0; i <= numOfImages-1; i++) {-->
+	for (var i = numOfImages-1; i >= 0; i--) {
+		imgarray[i] = new Image();
+		imgarray[i].src = "http://www.sat24.com/zoomimage2.ashx?region=eu&index=" + (numOfImages-i) + "&ir=" + infrared + "&lat=" + lat.toLocaleString() + "&lon=" + lon.toLocaleString();
+/*		document.getElementById('progressBar').value = (numOfImages-i);*/
+	}
+}
+
+function CambiaLuogo (){
+	switch(document.getElementById('dove').value) {
+		case "Puglia":
+			lat = 41;
+			lon = 16.5;
+		break;
+		case "Nord":
+			lat = 45;
+			lon = 10;
+		break;
+		case "Centro":
+			lat = 42;
+			lon = 12;
+		break;
+		case "Calabria+Sicilia":
+			lat = 38.5;
+			lon = 15;
+		break;
+		case "Sud":
+			lat = 39.9;
+			lon = 15.8;
+		break;
+		case "Adriatico":
+			lat = 42.1;
+			lon = 16;
+		break;
+	}
+	document.PlayForm.Lat.value = lat;
+	document.PlayForm.Lon.value = lon;
+
+}
+        function MouseScroll (event) {
+            var rolled = 0;
+            if ('wheelDelta' in event) {
+                rolled = event.wheelDelta;
+            }
+            else {  // Firefox
+                    // The measurement units of the detail and wheelDelta properties are different.
+                rolled = -40 * event.detail;
+            }
+            
+            if (rolled == -120) {
+				playMode = 0;
+				animImageDec();
+				setCurrImage();
+			}
+			else {
+				playMode = 0;
+				animImageInc();
+				setCurrImage();
+			}
+			// var info = document.getElementById ("info");
+            // info.innerHTML = rolled;
+        }
+
+        function InitMouseWheel () {
+                // for mouse scrolling in Firefox
+            var elem = document.getElementById ("MainImage");
+            if (elem.addEventListener) {    // all browsers except IE before version 9
+                    // Internet Explorer, Opera, Google Chrome and Safari
+                elem.addEventListener ("mousewheel", MouseScroll, false);
+                    // Firefox
+                elem.addEventListener ("DOMMouseScroll", MouseScroll, false);
+            }
+            else {
+                if (elem.attachEvent) { // IE before version 9
+                    elem.attachEvent ("onmousewheel", MouseScroll);
+                }
+            }
+        }
+
+</script></head>
+
+
+
+
+
+
+<body topmargin="0" leftmargin="0" bottommargin="0" rightmargin="0"  onload="InitMouseWheel ();">
+<table>
+<tbody>
+<tr>
+<td>
+<div style="position: relative; width: 800px; height: 600px;">
+<img name="MainImage" id="MainImage" src="" border="0" height="600" width="800" style="position: absolute; top: 0; left: 0;">
+<!--<img src="zoomimage2.png" alt="" style="position: absolute; top: 0; left: 0;">-->
+<img name="OverlayCities" id="OverlayCitiesPuglia" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAyAAAAJYAQMAAACguBAzAAAABlBMVEUAAAD/AAAb/40iAAAAAXRSTlMAQ
+ObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxEAAAsRAX9kX5EAAAAHdElNRQfhCgoKGhJ6wpQHAAAAt0lEQVR42u3TsRGCQBCG0WNMKYAIW7AAx7oILNYSLEFGbMDg/gH2veBCvrldrjUAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAIuYrUjEDCQ6RmBIA9eIpUjNwS91gikWk9xt7juq/H3PsqkUhiXJux/+en3pH5t5bjR7ZxfdffEj/yOSKRcWXYfNXNAwAAJzG8RUpGAADqurxESkbwMkW8TAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAPjfB2qAFoF8WnBWAAAAAElFTkSuQmCC"
+alt="" style="position: absolute; top: 0; left: 0;">
+</div>
+</td>
+<td>
+<select id="dove" onchange="CambiaLuogo(); CaricaImmagini();">
+	<option selected="" value="Puglia">Puglia</option>
+	<option value="Nord">Nord</option>
+	<option value="Centro">Centro</option>
+	<option value="Sud">Sud</option>
+	<option value="Calabria+Sicilia">Calabria+Sicilia</option>
+	<option value="Adriatico">Adriatico</option>
+  </select>
+</td>
+</tr>
+</tbody>
+</table>
+
+<!--<p></p>-->
+<style>
+    .vert {
+        -moz-orient: vertical;
+    }
+</style>
+
+<!--<progress name ="progressBar" class="vert" style="position: absolute; top: 0px; left: 0px;"
+value="" max="100" id="progressBar">No progress bar</progress>-->
+
+<script>
+
+
+/*document.MainImage.src = "http://www.sat24.com/zoomimage2.ashx?region=eu&index=" + "1" + "&ir=" + infrared + "&lat=" + lat + "&lon=" + lon;*/
+
+
+/*CaricaImmagini();*/
+
+
+</script>
+<form name="PlayForm">
+<table>
+<tbody><tr>
+<td><input type="button" onclick="playMode = 2" value="<<">
+</td><td><input type="button" onclick="playMode = 0" value="||">
+</td><td><input type="button" onclick="playMode = 1" value=">>">
+</td><td><input type="button" onclick="playMode = 0; animImageDec(); setCurrImage();" value="<">
+</td><td><input type="button" onclick="playMode = 0; animImageInc(); setCurrImage();" value=">">
+</td><td><input type="button" onclick="imageIndex = 0; setCurrImage();" value="|<">
+</td><td><input type="button" onclick="imageIndex = (numOfImages - 1) ; setCurrImage();" value=">|">
+</td>
+<td></td><td></td><td></td>
+<td><input type="button" onclick="timeoutValue = parseInt(document.PlayForm.IntervalValue.value)" value="Int. <-"></td>
+<td><input type="text" name="IntervalValue" size="2"></td>
+<td></td><td></td><td></td>
+<td>Index <input type="text" name="ImageIndex" size="1"></td>
+<td><input type="button" onclick="inizio = imageIndex ; document.PlayForm.Inizio.value = inizio;" value="Inizio"><input type="text" name="Inizio" size="1"></td>
+<td><input type="button" onclick="fine = imageIndex ; document.PlayForm.Fine.value = fine;" value="Fine"><input type="text" name="Fine" size="1"></td>
+<td><input type="button" onclick="createGif();" value="Crea anim"></td>
+<td></td><td></td><td></td>
+<td><input type="number" name="Lat" style="width: 7ch" step="0.5"></td><td><input type="number" name="Lon" style="width: 7ch" step="0.5"></td>
+<td><input type="button" onclick="lat = document.PlayForm.Lat.valueAsNumber; lon = document.PlayForm.Lon.valueAsNumber; CaricaImmagini ();" value="Set"></td>
+<td></td><td></td><td></td>
+<td><label><input type="checkbox" onclick="infrared=!infrared; CaricaImmagini ();">IF</label></td>
+<td><label><input type="checkbox" onclick="overlaycities=!overlaycities; setImageVisible('OverlayCitiesPuglia', overlaycities);">Overlay Città Puglia</label></td>
+</tr></tbody></table>
+</form>
+
+
+<script language="javascript">
+document.PlayForm.IntervalValue.value = timeoutValue;
+document.PlayForm.ImageIndex.value = imageIndex;
+document.PlayForm.Inizio.value = inizio;
+document.PlayForm.Fine.value = fine;
+document.PlayForm.Lat.value = lat;
+document.PlayForm.Lon.value = lon;
+setImageVisible('OverlayCitiesPuglia', overlaycities)
+CambiaLuogo();
+CaricaImmagini();
+</script>
+
+
+<!--
+<a href="#" onClick="playMode = 2">backward | </a>
+<a href="#" onClick="playMode = 0;">pause | </a>
+<a href="#" onClick="playMode = 1">forward | </a>
+<a href="#" onClick="animImageDec();">1 step b | </a>
+<a href="#" onClick="animImageInc();">1 step f | </a>
+<a href="#" onClick="imageIndex = 0;">first | </a>
+<a href="#" onClick="imageIndex = (numOfImages - 1) ;">last</a>
+<p></p>
+<a href="#" onClick="inizio = imageIndex ;">inizio</a>
+<a href="#" onClick="fine = imageIndex ;">fine</a>
+<a href="#" onClick="createGif();">crea animazione</a>
+<p></p>
+-->
+
+<script language="javascript">
+
+
+
+function createGif() {
+    
+	imgURLarray = new Array;
+	for (var i = 0; i <= fine-inizio; i++) {
+	imgURLarray[i] = imgarray[(i+inizio)].src
+}
+	
+	gifshot.createGIF({
+        'images': imgURLarray,
+		'gifWidth': 800,
+		'gifHeight': 600,
+		'interval': 0.5
+    }, function (obj) {
+        if (!obj.error) {
+            var image = obj.image,
+            animatedImage = document.createElement('img');
+            animatedImage.src = image;
+            document.body.appendChild(animatedImage);
+        }
+    });
+}
+
+function animImageInc()
+{
+if (imageIndex < (numOfImages-1))
+	imageIndex++
+else
+/*	imageIndex = 0;*/
+	playMode = 0;
+}
+
+function animImageDec()
+{
+if (imageIndex > 0)
+	imageIndex--;
+else
+/*	imageIndex = numOfImages-1;*/
+	playMode = 0;
+}
+
+function setCurrImage()
+{
+	document.MainImage.src = imgarray[imageIndex].src;
+	document.PlayForm.ImageIndex.value = imageIndex;
+	
+}
+
+function updateAnim()
+{
+	var currTimeoutValue;
+	
+	currTimeoutValue = timeoutValue;
+	if (playMode == 1)
+	{
+		animImageInc();
+		if (imageIndex == (numOfImages-1)) 
+			currTimeoutValue += animDelay;
+	}
+	else if (playMode == 2)
+	{
+		animImageDec();
+		if (imageIndex == 0) 
+			currTimeoutValue += animDelay;
+	}
+	if (playMode != 0) setCurrImage();
+	timeoutID = setTimeout("updateAnim()", currTimeoutValue);
+	}
+
+function clearLastUpdate()
+{
+	clearTimeout(timeoutID);
+	timeoutID = 0;
+}
+
+function startPlay()
+{
+	clearLastUpdate();
+	playMode = 1;
+	updateAnim();	
+}
+
+function startPlayReverse()
+{
+	clearLastUpdate();
+	playMode = 2;
+	updateAnim();	
+}
+
+
+
+updateAnim();
+
+</script>
+
+
+
+
+
+
+</body></html>
