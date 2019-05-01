@@ -1,0 +1,42 @@
+.ol-compassctrl.top
+{	top: 10%;
+	left: 5px;
+	width: 25px;
+	height: 40px;
+	-webkit-transform: translate(0,-50%);
+	transform: translate(0,-50%);
+}
+.ol-compassctrl.top-r-Logo1
+{	top: 12%;
+	right: 5px;
+	width: 360px;
+	height: 100px;
+	-webkit-transform: translate(0,-50%);
+	transform: translate(0,-50%);
+}
+.ol-compassctrl.top-r-Logo2
+{	top: 12%;
+	right: 5px;
+	width: 100px;
+	height: 100px;
+	-webkit-transform: translate(0,-50%);
+	transform: translate(0,-50%);
+}
+.ol-compassctrl.top-c-fir
+{	top: 7%;
+	left: 50%;
+	height: 30px;
+  width: 200px;
+	-webkit-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+}
+.ol-compassctrl.bottom
+{	top: auto;
+	left: auto;
+	bottom: 0;
+	right: 0;
+	width: 150px;
+	height: 150px;
+	-webkit-transform: none;
+	transform: none;
+}
