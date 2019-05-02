@@ -905,6 +905,47 @@ var snap = new ol.interaction.Snap({
 });
 
 
+var geolocation = new ol.Geolocation({
+  projection: map.getView().getProjection()
+});
+
+geolocation.setTracking(true);
+
+var positionFeature = new ol.Feature({
+  geometry: new ol.geom.Point([])
+});
+positionFeature.setStyle(new ol.style.Style({
+  image: new ol.style.Circle({
+    radius: 4,
+    fill: new ol.style.Fill({
+      color: '#3399CC'
+    }),
+    stroke: new ol.style.Stroke({
+      color: '#fff',
+      width: 1
+    })
+  })
+}));
+var accuracyFeature = new ol.Feature();
+var locationSource = new ol.source.Vector({
+  features: [positionFeature, accuracyFeature]
+});
+var locationVector = new ol.layer.Vector({
+  source: locationSource
+});
+
+geolocation.on('change', function(evt) {
+  var coord = geolocation.getPosition();
+  positionFeature.getGeometry().setCoordinates(coord);
+//  map.getView().setCenter(coord);
+    });
+geolocation.on('change:accuracyGeometry', function() {
+        accuracyFeature.setGeometry(geolocation.getAccuracyGeometry());
+      });
+
+map.addLayer(locationVector);
+
+
 var attribution = document.getElementsByClassName('ol-attribution')[0];
 var attributionList = attribution.getElementsByTagName('ul')[0];
 var firstLayerAttribution = attributionList.getElementsByTagName('li')[0];
