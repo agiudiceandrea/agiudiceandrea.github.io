@@ -147,7 +147,7 @@ var map = new ol.Map({
         new ol.control.ScaleLine({minWidth: 200}),
 //        new ol.control.ZoomSlider(),
         new ol.control.FullScreen({tipLabel: 'Schermo intero'}),
-        new ol.control.ZoomToExtent({extent: [666205.581372, 4548772.644111, 671179.853857, 4552155.819337], tipLabel: 'Vista iniziale', label: ''}),
+//        new ol.control.ZoomToExtent({extent: [666205.581372, 4548772.644111, 671179.853857, 4552155.819337], tipLabel: 'Vista iniziale', label: ''}),
         new ol.control.MousePosition({
           coordinateFormat: function(coord) {
               return "ETRS89 " + ol.coordinate.toStringHDMS(coord,2);
@@ -190,7 +190,7 @@ var overviewMap = new ol.control.OverviewMap({
 	  }),
 	  tipLabel: 'Mappa panoramica'
 });
-
+/*
 var scaleLineControl = new ol.control.CanvasScaleLine();
 var titleControl = new ol.control.CanvasTitle();
 titleControl.setTitle('Carta archeologica costiera e subacquea');
@@ -243,7 +243,7 @@ var saveButton = new ol.control.Button (
           }
         });
 map.addControl (saveButton);
-
+*/
 
 //map.getView().fit([1889407.198599, 5022748.107195, 1897336.103148, 5027897.317944], map.getSize());
 map.getView().fit([666205.581372, 4548772.644111, 671179.853857, 4552155.819337], map.getSize());
