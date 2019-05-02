@@ -85,6 +85,25 @@ new ol.layer.Tile({
     })
 }),
 
+
+new ol.layer.Image({
+    source: new ol.source.ImageWMS(({
+      url: "http://wms.pcn.minambiente.it/ogc?map=/ms_ogc/WMS_v1.3/raster/de_agostini.map",
+      attributions: [ortoGeoportaleAttribution],
+      ratio: 1,
+      params: {
+        "LAYERS": "CB.DEAGOSTINI.32",
+        "TILED": "true",
+        "VERSION": "1.3.0"
+      },
+      projection: 'EPSG:32633'
+      })),
+    title: "Cartografia di base - DeAgostini",
+    'type': 'base',
+    opacity: 1.000000,
+}),
+
+
 new ol.layer.Tile({
     'title': 'OpenStreetMap',
     'type': 'base',
