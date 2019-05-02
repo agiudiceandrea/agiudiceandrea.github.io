@@ -145,7 +145,7 @@ var map = new ol.Map({
         new measureControl(),
         new measureControl2(),
         new ol.control.ScaleLine({minWidth: 200}),
-        new ol.control.ZoomSlider(),
+//        new ol.control.ZoomSlider(),
         new ol.control.FullScreen({tipLabel: 'Schermo intero'}),
         new ol.control.ZoomToExtent({extent: [666205.581372, 4548772.644111, 671179.853857, 4552155.819337], tipLabel: 'Vista iniziale', label: ''}),
         new ol.control.MousePosition({
