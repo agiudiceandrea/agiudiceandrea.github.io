@@ -12,6 +12,7 @@ var geoSGIAttribution = new ol.Attribution({ html: ' | Geologia by <a href="http
 var datiFSPAttribution = new ol.Attribution({ html: ' | Dati by <a href="http://www.fspuglia.it/" target="_blank">Federeazione Speleologica Pugliese</a>'});
 var ortoGeoportaleAttribution = new ol.Attribution({ html: ' | Ortofoto by <a href="http://www.pcn.minambiente.it/" target="_blank">Geoportale Nazionale</a>'});
 var quadriUnioneIGM = new ol.Attribution({ html: ' | Quadri unione by <a href="http://www.igmi.org/" target="_blank">Istituto Geografico Militare</a>'});
+var stradeGeoportaleAttribution = new ol.Attribution({ html: ' | Carta stradale by <a href="http://www.pcn.minambiente.it/" target="_blank">Geoportale Nazionale</a>'});
 
 var wms_layers = [];
 
@@ -89,7 +90,7 @@ new ol.layer.Tile({
 new ol.layer.Image({
     source: new ol.source.ImageWMS(({
       url: "http://wms.pcn.minambiente.it/ogc?map=/ms_ogc/WMS_v1.3/raster/de_agostini.map",
-      attributions: [ortoGeoportaleAttribution],
+      attributions: [stradeGeoportaleAttribution],
       ratio: 1,
       params: {
         "LAYERS": "CB.DEAGOSTINI.32",
@@ -98,7 +99,7 @@ new ol.layer.Image({
       },
       projection: 'EPSG:32633'
       })),
-    title: "Cartografia di base - DeAgostini",
+    title: "Carta stradale DeAgostini - GN",
     'type': 'base',
     opacity: 1.000000,
 }),
@@ -456,7 +457,7 @@ var lyr_IGM125000PCN_13 = new ol.layer.Image({
                               },
                               projection: 'EPSG:32633'
                             })),
-                            title: "1:25'000 - PCN",
+                            title: "1:25'000 - Geoportale Nazionale",
 			    'type': 'base',
                             opacity: 1.000000,
                             
