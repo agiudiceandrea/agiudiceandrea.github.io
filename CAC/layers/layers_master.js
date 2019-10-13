@@ -223,7 +223,7 @@ var lyr_Ortofoto2010CosteSITPuglia_1 = new ol.layer.Tile({
                               params: {
                                 "LAYERS": "PugliaCoste_2010",
                                 "TILED": "true",
-                                "VERSION": "1.3.0"},
+                                "VERSION": "1.1.1"},
                             })),
                             title: "2010 Coste - SIT Puglia",
 			    'type': 'base',
