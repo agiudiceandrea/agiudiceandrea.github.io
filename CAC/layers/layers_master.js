@@ -221,11 +221,13 @@ var lyr_Ortofoto2010CosteSITPuglia_1 = new ol.layer.Tile({
                               url: "http://iws.sit.puglia.it/ecwp/ecw_wms.dll?",
     attributions: [ortoSitPugliaAgeaAttribution],
                               params: {
-                                "LAYERS": "PugliaCoste_2010",
+                                "LAYERS": "IMAGES_PUGLIACOSTE_2010.ECW",
                                 "TILED": "true",
-                                "VERSION": "1.1.1"},
+                                "VERSION": "1.1.1",
+                                "EXCEPTIONS": "application/vnd.ogc.se_xml"},
+                              projection: 'EPSG:32633'
                             })),
-                            title: "2010 Coste - SIT Puglia",
+                            title: "2010 - Coste - SIT Puglia",
 			    'type': 'base',
                             opacity: 1.000000,
                             
