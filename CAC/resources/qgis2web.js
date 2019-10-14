@@ -169,7 +169,7 @@ var map = new ol.Map({
     overlays: [overlayPopup],
     layers: layersList,
     view: new ol.View({
-         maxZoom: 21, minZoom: 10, projection: new ol.proj.Projection({
+         maxZoom: 25, minZoom: 10, projection: new ol.proj.Projection({
             code: 'EPSG:25833',
             units: 'm'})
     })
@@ -258,7 +258,7 @@ map.addControl(layerSwitcher);
 layerSwitcher.showPanel();
 
 
-
+/*
 map.getView().on('change:resolution', function (e) {
    if (map.getView().getZoom() > 18) {
        if (map.removeLayer(lyr_BA_TAM_001233_18)) {
@@ -289,7 +289,7 @@ map.getView().on('change:resolution', function (e) {
 	   }
    }
 });
-
+*/
 
 
 

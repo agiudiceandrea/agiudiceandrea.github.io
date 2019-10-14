@@ -754,6 +754,20 @@ var lyr_grigliato_sitpuglia_5000_0 = new ol.layer.Vector({
             });
 
 
+var format_campomarino = new ol.format.GeoJSON();
+var features_campomarino = format_campomarino.readFeatures(json_campomarino, 
+            {dataProjection: 'EPSG:25833', featureProjection: 'EPSG:25833'});
+var jsonSource_campomarino = new ol.source.Vector({
+    attributions: [],
+});
+jsonSource_campomarino.addFeatures(features_campomarino);
+var lyr_campomarino = new ol.layer.Vector({
+                declutter: true,
+                source:jsonSource_campomarino, 
+                style: style_campomarino,
+                title: '<img style="vertical-align: middle;" src="styles/legend/campomarino.png" /> Ricognizione 2018'
+            });
+
 var group_Cartografiacatastale = new ol.layer.Group({
                                 layers: [lyr_Particelle_7,lyr_Fabbricati_8,lyr_Vestizioni_9,lyr_Strade_10,lyr_Acque_11,lyr_Mappe_12,],
 				fold: 'close',
@@ -787,9 +801,9 @@ lyr_IGM150000PCP_19.setVisible(false);lyr_Geologia50kSGI_20.setVisible(false);ly
 lyr_PPTR_23.setVisible(false);lyr_BBCC_24.setVisible(false);lyr_CatastoGrotteSIT_26.setVisible(false);lyr_CatastoGrotteFSP_27.setVisible(false);lyr_trasparente.setVisible(false);
 lyr_serie_25v_wgs84_geo_0.setVisible(false);lyr_serie_50_wgs84_geo_0.setVisible(false);lyr_Ortofoto19881989PCN_28.setVisible(false);lyr_Ortofoto19941998PCN_29.setVisible(false);
 lyr_grigliato_sitpuglia_5000_0.setVisible(false);
-lyr_IDROGEO_100.setVisible(false);lyr_RetiGeodeticheSITPUglia.setVisible(false);
+lyr_IDROGEO_100.setVisible(false);lyr_RetiGeodeticheSITPUglia.setVisible(false);lyr_campomarino.setVisible(false);
 
-var layersList = [baseLayer,group_TopografiaIGM,group_GeologiaSGI,group_ORTOFOTO,group_PR,group_Cartografiacatastale,lyr_CartaTecnicaRegionaleSITPuglia_17,lyr_RetiGeodeticheSITPUglia,lyr_CatastoGrotteFSP_27,lyr_CatastoGrotteSIT_26,lyr_BatimetriaSITPuglia_14,lyr_grigliato_sitpuglia_5000_0,lyr_serie_25v_wgs84_geo_0,lyr_serie_50_wgs84_geo_0,lyr_ConfiniComunali_15,lyr_InquadramentoSITPuglia_16];
+var layersList = [baseLayer,group_TopografiaIGM,group_GeologiaSGI,group_ORTOFOTO,group_PR,group_Cartografiacatastale,lyr_CartaTecnicaRegionaleSITPuglia_17,lyr_RetiGeodeticheSITPUglia,lyr_CatastoGrotteFSP_27,lyr_CatastoGrotteSIT_26,lyr_BatimetriaSITPuglia_14,lyr_grigliato_sitpuglia_5000_0,lyr_serie_25v_wgs84_geo_0,lyr_serie_50_wgs84_geo_0,lyr_ConfiniComunali_15,lyr_InquadramentoSITPuglia_16,lyr_campomarino];
 
 lyr_serie_25v_wgs84_geo_0.set('fieldAliases', {'TAVOLETTA': 'TAVOLETTA', 'TITOLO': 'TITOLO', 'ANNO': 'ANNO', 'EDIZIONE': 'EDIZIONE', 'SERIE': 'SERIE', });
 lyr_serie_25v_wgs84_geo_0.set('fieldImages', {'TAVOLETTA': 'TextEdit', 'TITOLO': 'TextEdit', 'ANNO': 'TextEdit', 'EDIZIONE': 'TextEdit', 'SERIE': 'TextEdit', });
@@ -809,5 +823,11 @@ lyr_grigliato_sitpuglia_5000_0.set('fieldAliases', {'Elemento': 'Elemento CTR Pu
 lyr_grigliato_sitpuglia_5000_0.set('fieldImages', {'Elemento': 'TextEdit', });
 lyr_grigliato_sitpuglia_5000_0.set('fieldLabels', {'Elemento': 'inline label', });
 lyr_grigliato_sitpuglia_5000_0.on('precompose', function(evt) {
+    evt.context.globalCompositeOperation = 'normal';
+});
+lyr_campomarino.set('fieldAliases', {'UTC': 'UTC', 'Lon': 'Lon', 'Lat': 'Lat', 'UTC_NOME': 'UT', });
+lyr_campomarino.set('fieldImages', {'UTC': 'TextEdit', 'Lon': 'TextEdit', 'Lat': 'TextEdit', 'UTC_NOME': 'TextEdit', });
+lyr_campomarino.set('fieldLabels', {'UTC': 'inline label', 'Lon': 'inline label', 'Lat': 'inline label', 'UTC_NOME': 'inline label', });
+lyr_campomarino.on('precompose', function(evt) {
     evt.context.globalCompositeOperation = 'normal';
 });
