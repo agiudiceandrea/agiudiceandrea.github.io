@@ -702,7 +702,7 @@ var lyr_RetiGeodeticheSITPUglia = new ol.layer.Image({
           }),
           title: "Reti Geodetiche - SIT Puglia",
         });
-              wms_layers.push([lyr_RetiGeodeticheSITPUglia, 0]);
+              wms_layers.push([lyr_RetiGeodeticheSITPUglia, 1]);
 
 
 
