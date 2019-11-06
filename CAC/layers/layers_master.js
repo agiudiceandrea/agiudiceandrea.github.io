@@ -341,6 +341,19 @@ var lyr_Particelle_7 = new ol.layer.Image({
                           });
               wms_layers.push([lyr_Particelle_7, 0]);
 
+var lyr_Particelle_7_rast = new ol.source.Raster({
+                            sources: [lyr_Particelle_7],
+                            operation: function(pixels, data) {
+                              var pixel = pixels[0];
+                              if (pixel[0] = 253 & pixel[1] = 236 & pixel[3] = 189) {
+                                pixel[0] = 0;
+                                pixel[1] = 0;
+                                pixel[2] = 0;
+                                pixel[3] = 0;
+                              }
+          return pixel;
+        },
+
 var lyr_Fabbricati_8 = new ol.layer.Image({
                             source: new ol.source.ImageWMS(({
                               url: "https://wms.cartografia.agenziaentrate.gov.it/inspire/wms/ows01.php",
@@ -769,7 +782,7 @@ var lyr_campomarino = new ol.layer.Vector({
             });
 
 var group_Cartografiacatastale = new ol.layer.Group({
-                                layers: [lyr_Particelle_7,lyr_Fabbricati_8,lyr_Vestizioni_9,lyr_Strade_10,lyr_Acque_11,lyr_Mappe_12,],
+                                layers: [lyr_Particelle_7_rast,lyr_Fabbricati_8,lyr_Vestizioni_9,lyr_Strade_10,lyr_Acque_11,lyr_Mappe_12,],
 				fold: 'close',
                                 title: "Cartografia catastale - AdE"});
 var group_GeologiaSGI = new ol.layer.Group({
