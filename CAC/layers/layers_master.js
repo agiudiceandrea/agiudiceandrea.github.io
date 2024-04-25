@@ -324,6 +324,23 @@ var lyr_Ortofoto2018DemaniomarittimoPuglia_6 = new ol.layer.Tile({
                           });
               wms_layers.push([lyr_Ortofoto2018DemaniomarittimoPuglia_6, 0]);
 
+var lyr_Ortofoto2019SITPuglia_7 = new ol.layer.Tile({
+                            source: new ol.source.TileWMS(({
+                              url: "http://webapps.sit.puglia.it/arcgis/services/BaseMaps/Ortofoto2019/ImageServer/WMSServer",
+    attributions: [ortoSitPugliaAgeaAttribution],
+                              params: {
+                                "LAYERS": "0",
+                                "TILED": "true",
+                                "VERSION": "1.3.0"},
+                            })),
+                            title: "2019 - SIT Puglia / AGEA",
+			    'type': 'base',
+                            opacity: 1.000000,
+                            
+                            
+                          });
+              wms_layers.push([lyr_Ortofoto2019SITPuglia_7, 0]);
+
 var lyr_Particelle_7 = new ol.layer.Image({
                             source: new ol.source.ImageWMS(({
                               url: "https://wms.cartografia.agenziaentrate.gov.it/inspire/wms/ows01.php",
@@ -781,7 +798,7 @@ var group_TopografiaIGM = new ol.layer.Group({
 				fold: 'close',
                                 title: "Topografia IGM"});
 var group_ORTOFOTO = new ol.layer.Group({
-                                layers: [lyr_trasparente,lyr_Ortofoto19881989PCN_28,lyr_Ortofoto19941998PCN_29,lyr_Ortofoto2006SITPuglia_0,lyr_Ortofoto2010SITPuglia_1,lyr_Ortofoto2010CosteSITPuglia_1,lyr_Ortofoto2011SITPuglia_2,lyr_Ortofoto2013SITPuglia_3,lyr_Ortofoto2016SITPuglia_4,lyr_Ortofoto2017DemaniomarittimoPuglia_5,lyr_Ortofoto2018DemaniomarittimoPuglia_6,],
+                                layers: [lyr_trasparente,lyr_Ortofoto19881989PCN_28,lyr_Ortofoto19941998PCN_29,lyr_Ortofoto2006SITPuglia_0,lyr_Ortofoto2010SITPuglia_1,lyr_Ortofoto2010CosteSITPuglia_1,lyr_Ortofoto2011SITPuglia_2,lyr_Ortofoto2013SITPuglia_3,lyr_Ortofoto2016SITPuglia_4,lyr_Ortofoto2017DemaniomarittimoPuglia_5,lyr_Ortofoto2018DemaniomarittimoPuglia_6,lyr_Ortofoto2019SITPuglia_7,],
 				fold: 'close',
                                 title: "Ortofoto"});
 var group_PR = new ol.layer.Group({
@@ -793,7 +810,7 @@ var group_PR = new ol.layer.Group({
 
 
 lyr_Ortofoto2006SITPuglia_0.setVisible(false);lyr_Ortofoto2010SITPuglia_1.setVisible(false);lyr_Ortofoto2010CosteSITPuglia_1.setVisible(false);lyr_Ortofoto2011SITPuglia_2.setVisible(false);lyr_Ortofoto2013SITPuglia_3.setVisible(false);
-lyr_Ortofoto2016SITPuglia_4.setVisible(false);lyr_Ortofoto2017DemaniomarittimoPuglia_5.setVisible(false);lyr_Ortofoto2018DemaniomarittimoPuglia_6.setVisible(false);
+lyr_Ortofoto2016SITPuglia_4.setVisible(false);lyr_Ortofoto2017DemaniomarittimoPuglia_5.setVisible(false);lyr_Ortofoto2018DemaniomarittimoPuglia_6.setVisible(false);lyr_Ortofoto2019SITPuglia_7.setVisible(false);
 lyr_Particelle_7.setVisible(false);lyr_Fabbricati_8.setVisible(false);lyr_Vestizioni_9.setVisible(false);lyr_Strade_10.setVisible(false);lyr_Acque_11.setVisible(false);
 lyr_Mappe_12.setVisible(false);lyr_IGM125000PCN_13.setVisible(false);lyr_BatimetriaSITPuglia_14.setVisible(true);lyr_ConfiniComunali_15.setVisible(true);
 lyr_InquadramentoSITPuglia_16.setVisible(true);lyr_CartaTecnicaRegionaleSITPuglia_17.setVisible(false);
