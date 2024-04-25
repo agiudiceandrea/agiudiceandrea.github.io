@@ -393,7 +393,7 @@ var onPointerMove = function(evt) {
                                 popupText = popupText + '<tr>' + popupField + '</tr>';
                             }
                         } 
-                        popupText = popupText + '</table></li>';    
+                        popupText = popupText + '</table></li>';
                     }
                     popupText = popupText + '</ul>';
                 }
