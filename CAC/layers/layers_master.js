@@ -798,7 +798,7 @@ lyr_Particelle_7.setVisible(false);lyr_Fabbricati_8.setVisible(false);lyr_Vestiz
 lyr_Mappe_12.setVisible(false);lyr_IGM125000PCN_13.setVisible(false);lyr_BatimetriaSITPuglia_14.setVisible(true);lyr_ConfiniComunali_15.setVisible(true);
 lyr_InquadramentoSITPuglia_16.setVisible(true);lyr_CartaTecnicaRegionaleSITPuglia_17.setVisible(false);
 lyr_IGM150000PCP_19.setVisible(false);lyr_Geologia50kSGI_20.setVisible(false);lyr_Geologia100kSGI_21.setVisible(false);lyr_PianoRegionaleCoste_22.setVisible(false);
-lyr_PPTR_23.setVisible(false);lyr_BBCC_24.setVisible(false);lyr_CatastoGrotteSIT_26.setVisible(false);lyr_CatastoGrotteFSP_27.setVisible(false);lyr_trasparente.setVisible(false);
+lyr_PPTR_23.setVisible(false);lyr_BBCC_24.setVisible(false);lyr_CatastoGrotteSIT_26.setVisible(false);lyr_CatastoGrotteFSP_27.setVisible(false);lyr_trasparente.setVisible(true);
 lyr_serie_25v_wgs84_geo_0.setVisible(false);lyr_serie_50_wgs84_geo_0.setVisible(false);lyr_Ortofoto19881989PCN_28.setVisible(false);lyr_Ortofoto19941998PCN_29.setVisible(false);
 lyr_grigliato_sitpuglia_5000_0.setVisible(false);
 lyr_IDROGEO_100.setVisible(false);lyr_RetiGeodeticheSITPUglia.setVisible(false);lyr_campomarino.setVisible(false);
