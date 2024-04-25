@@ -131,7 +131,7 @@ new ol.layer.Tile({
 new ol.layer.Tile({
     'title': 'Stamen Watercolor',
     'type': 'base',
-    'visible': 'true',
+    //'visible': 'true',
     source: new ol.source.Stamen({
         layer: 'watercolor'
     })
