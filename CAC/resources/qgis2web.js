@@ -157,11 +157,20 @@ var map = new ol.Map({
           undefinedHTML: ''
         }),
         new ol.control.MousePosition({
+          coordinateFormat: function(coord) {
+              return "ETRS89 " + ol.coordinate.format(coord, 'Lon: {x} - Lat: {y}', 6);
+          },
+          projection: 'EPSG:4326',
+          className: 'ol-mouse-position2',
+          undefinedHTML: ''
+        }),
+
+        new ol.control.MousePosition({
           coordinateFormat: function(coordinate) {
               return ol.coordinate.format(coordinate, 'ETRS89/UTM33N X: {x} - Y: {y}', 1);
           },
           projection: 'EPSG:25833',
-          className: 'ol-mouse-position2',
+          className: 'ol-mouse-position3',
           undefinedHTML: ''
         }),
     ]),
