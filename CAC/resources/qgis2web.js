@@ -129,6 +129,7 @@ var closer = document.getElementById('popup-closer');
 closer.onclick = function() {
     container.style.display = 'none';
     closer.blur();
+    markerLayer.setVisible(false);
     return false;
 };
 var overlayPopup = new ol.Overlay({
@@ -174,6 +175,28 @@ var map = new ol.Map({
             units: 'm'})
     })
 });
+
+const marker = new ol.Feature({
+  geometry: new ol.geom.Point([[]])
+});
+marker.setStyle(
+  new ol.style.Style({
+    image: new ol.style.Icon({
+      src: "http://maps.google.com/mapfiles/kml/shapes/placemark_circle_highlight.png",
+      anchor: [0.5, 0.5],
+      scale: 0.5,
+      anchorXUnits: "fraction",
+      anchorYUnits: "fraction",
+      anchorOrigin: "bottom-left"
+    })
+  })
+);
+const markerLayer = new ol.layer.Vector({
+  source: new ol.source.Vector({
+    features: [marker]
+  })
+});
+map.addLayer(markerLayer);
 
 var OSMperOverviewMap = new ol.layer.Tile({
 		source: new ol.source.OSM()
@@ -393,7 +416,7 @@ var onPointerMove = function(evt) {
                                 popupText = popupText + '<tr>' + popupField + '</tr>';
                             }
                         } 
-                        popupText = popupText + '</table></li>';
+                        popupText = popupText + '</table></li>';    
                     }
                     popupText = popupText + '</ul>';
                 }
@@ -594,8 +617,19 @@ var onSingleClick = function(evt) {
         }
     }
 
+    var coordToCopy = false;
+    if (evt.originalEvent.ctrlKey) {
+        var coordToCopyText = "ETRS89 " + ol.coordinate.toStringHDMS(ol.proj.transform(coord, viewProjection, 'EPSG:4326'),2) + "<br>";
+        coordToCopyText += "<br>" + ol.coordinate.format(ol.proj.transform(coord, viewProjection, 'EPSG:4326'), 'ETRS89 Lon: {x} - Lat: {y}', 6) + "<br>";
+        coordToCopyText += "<br>" + ol.coordinate.format(coord, 'ETRS89/UTM33N X: {x} - Y: {y}', 1);
+        popupText = coordToCopyText;
+        marker.getGeometry().setCoordinates(coord);
+        markerLayer.setVisible(true);
+        var coordToCopy = true;
+    }
+
     if (popupText) {
-	if (wmsgetfeatureinfo) { $('#popup').css('min-width','500px'); } else { $('#popup').css('min-width','170px'); } 
+	if (wmsgetfeatureinfo) { $('#popup').css('min-width','500px'); } else if (coordToCopy) { $('#popup').css('min-width','350px'); } else { $('#popup').css('min-width','170px'); } 
         overlayPopup.setPosition(coord);
         content.innerHTML = popupText;
         container.style.display = 'block';  
