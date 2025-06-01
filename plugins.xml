@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugins>
+<pyqgis_plugin>
+<name>HelloWorld</name>
+<qgisMinimumVersion>3.0</qgisMinimumVersion>
+<qgisMaximumVersion>3.99</qgisMaximumVersion>
+<description>Minimal test plugin for QGIS</description>
+<version>0.1</version>
+<author>Patrick C. Sullivan</author>
+<email>patrick@wickedballoons.com</email>
+<about>Just a test to verify plugin repository</about>
+<category>Testing</category>
+<download_url>http://qgis.wickedballoons.com/plugins/HelloWorld.zip</download_url>
+</pyqgis_plugin>
+<pyqgis_plugin>
+<name>OziMapConverter</name>
+<qgisMinimumVersion>3.0</qgisMinimumVersion>
+<qgisMaximumVersion>3.99</qgisMaximumVersion>
+<description>Converter for .map files from Ozi Explorer</description>
+<version>0.9</version>
+<author>Patrick C. Sullivan</author>
+<email>patrick@wickedballoons.com</email>
+<about>A simple tool that imports and overlays .map and image files from Ozi Explorer</about>
+<hasProcessingProvider>yes</hasProcessingProvider>
+<changelog>0.9 Beta version</changelog>
+<tags>Ozi Explorer, conversion</tags>
+<homepage>http://qgis.wickedballoons.com</homepage>
+<category>Conversion</category>
+<icon>http://qgis.wickedballoons.com/plugins/OziMapConverter/icon.png</icon>
+<experimental>False</experimental>
+<deprecated>False</deprecated>
+<server>True</server>
+<download_url>http://qgis.wickedballoons.com/plugins/OziMapConverter.zip</download_url>
+</pyqgis_plugin>
+</plugins>
