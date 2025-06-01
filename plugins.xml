@@ -2,8 +2,8 @@
 <plugins>
 <pyqgis_plugin name="HelloWorld" version="0.1">
 <name>HelloWorld</name>
-<qgisMinimumVersion>3.0</qgisMinimumVersion>
-<qgisMaximumVersion>3.99</qgisMaximumVersion>
+<qgis_minimum_version>3.0</qgis_minimum_version>
+<qgis_maximum_version>3.99</qgis_maximum_version>
 <description>Minimal test plugin for QGIS</description>
 <version>0.1</version>
 <author>Patrick C. Sullivan</author>
