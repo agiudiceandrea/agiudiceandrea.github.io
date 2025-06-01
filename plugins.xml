@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <plugins>
-<pyqgis_plugin>
+<pyqgis_plugin name="HelloWorld" version="0.1">
 <name>HelloWorld</name>
 <qgisMinimumVersion>3.0</qgisMinimumVersion>
 <qgisMaximumVersion>3.99</qgisMaximumVersion>
@@ -12,7 +12,7 @@
 <category>Testing</category>
 <download_url>http://qgis.wickedballoons.com/plugins/HelloWorld.zip</download_url>
 </pyqgis_plugin>
-<pyqgis_plugin>
+<pyqgis_plugin name="OziMapConverter" version="0.9">
 <name>OziMapConverter</name>
 <qgisMinimumVersion>3.0</qgisMinimumVersion>
 <qgisMaximumVersion>3.99</qgisMaximumVersion>
