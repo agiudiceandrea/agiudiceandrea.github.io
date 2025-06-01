@@ -14,8 +14,8 @@
 </pyqgis_plugin>
 <pyqgis_plugin name="OziMapConverter" version="0.9">
 <name>OziMapConverter</name>
-<qgisMinimumVersion>3.0</qgisMinimumVersion>
-<qgisMaximumVersion>3.99</qgisMaximumVersion>
+<qgis_minimum_version>3.0</qgis_minimum_version>
+<qgis_maximum_version>3.99</qgis_maximum_version>
 <description>Converter for .map files from Ozi Explorer</description>
 <version>0.9</version>
 <author>Patrick C. Sullivan</author>
