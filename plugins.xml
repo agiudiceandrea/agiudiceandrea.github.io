@@ -5,7 +5,6 @@
 <qgis_minimum_version>3.0</qgis_minimum_version>
 <qgis_maximum_version>3.99</qgis_maximum_version>
 <description>Minimal test plugin for QGIS</description>
-<version>0.1</version>
 <author>Patrick C. Sullivan</author>
 <email>patrick@wickedballoons.com</email>
 <about>Just a test to verify plugin repository</about>
